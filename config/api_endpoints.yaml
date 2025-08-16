@@ -1,0 +1,46 @@
+# FPL API Configuration
+fpl_api:
+  base_url: "https://fantasy.premierleague.com/api/"
+  endpoints:
+    bootstrap_static: "bootstrap-static/"
+    fixtures: "fixtures/"
+    gameweek_live: "event/{}/live/"
+    manager_history: "entry/{}/history/"
+    manager_picks: "entry/{}/event/{}/picks/"
+    league_standings: "leagues-classic/{}/standings/"
+    dream_team: "dream-team/{}"
+    
+# Additional Data Sources
+data_sources:
+  fbref:
+    base_url: "https://fbref.com/en/comps/9/"
+    premier_league_stats: "Premier-League-Stats"
+    
+  api_football:
+    base_url: "https://v3.football.api-sports.io/"
+    endpoints:
+      fixtures: "fixtures"
+      injuries: "injuries"
+      players: "players"
+    headers:
+      X-RapidAPI-Key: "YOUR_API_KEY_HERE"  # Free tier available
+      
+  premier_injuries:
+    base_url: "https://www.premierinjuries.com/"
+    injury_table: "injury-table.php"
+    
+  transfermarkt:
+    base_url: "https://www.transfermarkt.com/"
+    
+# Rate Limiting
+rate_limits:
+  fpl_api: 10  # requests per second
+  api_football: 100  # requests per day (free tier)
+  web_scraping: 2  # requests per second
+
+# Data Update Schedule
+update_schedule:
+  real_time: ["fixtures", "injuries", "lineups"]
+  daily: ["player_stats", "team_ratings"]
+  weekly: ["price_changes", "ownership"]
+  gameweek: ["points", "transfers"]
